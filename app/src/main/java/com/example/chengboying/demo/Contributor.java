@@ -6,17 +6,17 @@ package com.example.chengboying.demo;
  */
 
 public  class Contributor {
-    public final String login;
-    public final int contributions;
+    public final String name;
+    public final int id;
     public Contributor(String login, int contributions) {
-        this.login = login;
-        this.contributions = contributions;
+        this.name = login;
+        this.id = contributions;
     }
     @Override
     public String toString() {
         return "Contributor{" +
-                "login='" + login + '\'' +
-                ", contributions=" + contributions +
+                "name='" + name + '\'' +
+                ", id=" + id +
                 '}';
     }
 }
