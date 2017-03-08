@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.chengboying.demo.AdapterDataHelper;
 import com.example.chengboying.demo.Contributor;
 import com.example.chengboying.demo.GitHub;
 import com.example.chengboying.demo.R;
@@ -30,29 +31,41 @@ import retrofit.Retrofit;
 
 public class NormalRecyclerViewAdapter extends RecyclerView.Adapter<NormalRecyclerViewAdapter.NormalTextViewHolder>{
     private final LayoutInflater mLayoutInflater;
+    private List<String> mDatas;
+    private Context mContext;
 //    private String[] mTitles;
     private int count=9;
+//    private int
 
-    public NormalRecyclerViewAdapter(Context context) {
+    public NormalRecyclerViewAdapter(Context context, List<String> datas) {
 //        mTitles = context.getResources().getStringArray(R.array.my_image_view);
         mLayoutInflater = LayoutInflater.from(context);
+        this. mContext=context;
+        this. mDatas=datas;
 
     }
 
     @Override
     public NormalTextViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new NormalTextViewHolder(mLayoutInflater.inflate(R.layout.item_text, parent, false));
+//        return new NormalTextViewHolder(mLayoutInflater.inflate(R.layout.item_text, parent, false));
+        View view = mLayoutInflater.inflate(R.layout. item_text,parent, false);
+        NormalTextViewHolder holder= new NormalTextViewHolder(view);
+        return holder;
     }
 
     @Override
     public void onBindViewHolder(NormalTextViewHolder holder, int position) {
-        holder.setShow();
+//        holder.setShow();
         holder.setName();
+//        holder.textView.setText( mDatas.get(position));
+        holder.textView.setText(AdapterDataHelper.getInstance().getData().get(position));
     }
 
     @Override
     public int getItemCount() {
-        return  count;
+//        return  AdapterDataHelper.getInstance().getData().size();
+        return mDatas.size();
+//        return  count;
     }
 
     public void changecount(boolean single){
@@ -68,7 +81,7 @@ public class NormalRecyclerViewAdapter extends RecyclerView.Adapter<NormalRecycl
         NormalTextViewHolder(View view) {
             super(view);
 
-             draweeView = (SimpleDraweeView) view.findViewById(R.id.my_image_view);
+//             draweeView = (SimpleDraweeView) view.findViewById(R.id.my_image_view);
              textView = (TextView) view.findViewById(R.id.name);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -97,10 +110,16 @@ public class NormalRecyclerViewAdapter extends RecyclerView.Adapter<NormalRecycl
             }
             try{
                 Response<List<Contributor>> response = call.execute(); // 同步
+
+                AdapterDataHelper.getInstance().setData(response.body());
+
+
                 Log.d("hhh", "response:" + response.body().toString());
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+
 
             // clone
             Call<List<Contributor>> call1 = call.clone();
@@ -109,6 +128,7 @@ public class NormalRecyclerViewAdapter extends RecyclerView.Adapter<NormalRecycl
             call1.enqueue(new Callback<List<Contributor>>() {
                 @Override
                 public void onResponse(Response<List<Contributor>> response, Retrofit retrofit) {
+                    AdapterDataHelper.getInstance().setData(response.body());
                     Log.e("HHH","response:" + response.body().toString());
                 }
 
@@ -118,7 +138,6 @@ public class NormalRecyclerViewAdapter extends RecyclerView.Adapter<NormalRecycl
                 }
             });
         }
-
 
     }
 }

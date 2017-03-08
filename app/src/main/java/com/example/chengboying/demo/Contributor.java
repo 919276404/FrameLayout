@@ -6,11 +6,11 @@ package com.example.chengboying.demo;
  */
 
 public  class Contributor {
-    public final String name;
+    public String name;
     public final int id;
-    public Contributor(String login, int contributions) {
-        this.name = login;
-        this.id = contributions;
+    public Contributor(String name, int id) {
+        this.name = name;
+        this.id = id;
     }
     @Override
     public String toString() {
@@ -19,4 +19,14 @@ public  class Contributor {
                 ", id=" + id +
                 '}';
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
 }
