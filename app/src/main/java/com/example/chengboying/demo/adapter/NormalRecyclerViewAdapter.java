@@ -33,12 +33,9 @@ public class NormalRecyclerViewAdapter extends RecyclerView.Adapter<NormalRecycl
     private final LayoutInflater mLayoutInflater;
     private List<String> mDatas;
     private Context mContext;
-//    private String[] mTitles;
     private int count=9;
-//    private int
 
     public NormalRecyclerViewAdapter(Context context, List<String> datas) {
-//        mTitles = context.getResources().getStringArray(R.array.my_image_view);
         mLayoutInflater = LayoutInflater.from(context);
         this. mContext=context;
         this. mDatas=datas;
