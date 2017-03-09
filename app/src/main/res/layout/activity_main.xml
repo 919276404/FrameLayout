@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -7,46 +7,91 @@
     android:orientation="vertical"
     tools:context="com.example.chengboying.demo.MainActivity">
     <TextView
+        android:id="@+id/tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="45sp"
-        android:text="相对布局"/>
-    <Button
-        android:id="@+id/button3"
-        android:text="button3"
-        android:layout_centerInParent="true"
+        android:text="FrameLayout布局"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="示例1 FrameLayout内容重叠"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+    <TextView
         android:layout_width="wrap_content"
-        android:layout_height="150dp" />
+        android:layout_height="wrap_content"
+        android:text="我是TextView，内容比较长"
+        android:background="#ff0000"/>
     <Button
-        android:id="@+id/button1"
-        android:layout_above="@+id/button3"
-        android:layout_toLeftOf="@+id/button3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/button2"
-        android:layout_above="@+id/button3"
-        android:layout_toRightOf="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/button4"
-        android:layout_below="@+id/button3"
-        android:layout_toLeftOf="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/button5"
-        android:text="button5"
-        android:layout_alignBaseline="@+id/button3"
-        android:layout_below="@+id/button3"
-        android:layout_toRightOf="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="#ffff00"
+        android:text="我是按钮"/>
+</FrameLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="事例2：FrameLayout使用layout_gravity属性"/>
+
+    <FrameLayout
+        android:layout_width="300dp"
+        android:layout_height="120dp" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="文本居左"
+            android:background="#ff0000"
+            android:gravity="center"
+            android:layout_gravity="left"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="文本居中"
+            android:background="#ffff00"
+            android:gravity="center"
+            android:layout_gravity="center"/>
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="事例3"
+        android:textSize="20dp"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="50sp"
+            android:textColor="#000000"
+            android:text="第一层"/>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:textColor="#ffff00"
+            android:text="第二层"/>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textColor="#ff00ff"
+            android:text="第三层"/>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#00ffff"
+            android:text="第四层"/>
+    </FrameLayout>
 
 
-
-
-
-</RelativeLayout>
+</LinearLayout>
